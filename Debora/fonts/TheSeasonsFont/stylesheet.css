@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'FONTSPRING DEMO - The Seasons';
+    src: url('FONTSPRINGDEMO-TheSeasonsLightRegular.woff2') format('woff2'),
+        url('FONTSPRINGDEMO-TheSeasonsLightRegular.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
