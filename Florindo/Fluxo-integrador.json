@@ -1,0 +1,494 @@
+[
+    {
+        "id": "2def2608a0183bd8",
+        "type": "tab",
+        "label": "Projeto integrador",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "955711ac7280c657",
+        "type": "ui_form",
+        "z": "2def2608a0183bd8",
+        "name": "Inserir dados",
+        "label": "",
+        "group": "7ce5eb2fc9bf8ade",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Tipo",
+                "value": "tipo",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Peso (kg)",
+                "value": "peso",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Preço",
+                "value": "preco",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Sob-encomenda",
+                "value": "sob-encomenda",
+                "type": "switch",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "tipo": "",
+            "peso": "",
+            "preco": "",
+            "sob-encomenda": false
+        },
+        "payload": "",
+        "submit": "Enviar",
+        "cancel": "Cancelar",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "3a5c2e334db5d379"
+            ]
+        ]
+    },
+    {
+        "id": "3a5c2e334db5d379",
+        "type": "function",
+        "z": "2def2608a0183bd8",
+        "name": "INSERT",
+        "func": "let tipo = msg.payload[\"tipo\"];\nlet peso = msg.payload[\"peso\"];\nlet preco = msg.payload[\"preco\"];\nlet sob_encomenda = msg.payload[\"sob-encomenda\"];\n\nlet data = new Date().toISOString().slice(0, 10);\n\nmsg.topic = `\nINSERT INTO produto (peso, tipo, preco, data_fabricacao, sob_encomenda) VALUES\n(${peso}, '${tipo}', ${preco}, '${data}', ${sob_encomenda});\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 200,
+        "wires": [
+            [
+                "862b2ba918cef008"
+            ]
+        ]
+    },
+    {
+        "id": "cff16be1577e8f55",
+        "type": "debug",
+        "z": "2def2608a0183bd8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "862b2ba918cef008",
+        "type": "mysql",
+        "z": "2def2608a0183bd8",
+        "mydb": "1ed97092ba3e6da9",
+        "name": "Banco de dados",
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "cff16be1577e8f55"
+            ]
+        ]
+    },
+    {
+        "id": "65472f59c0a7f56c",
+        "type": "ui_form",
+        "z": "2def2608a0183bd8",
+        "name": "Deletar dados",
+        "label": "",
+        "group": "1701be2d6e2947e6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Id",
+                "value": "id",
+                "type": "number",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "id": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 240,
+        "y": 360,
+        "wires": [
+            [
+                "b0bfcfe5a636f7cd"
+            ]
+        ]
+    },
+    {
+        "id": "b0bfcfe5a636f7cd",
+        "type": "function",
+        "z": "2def2608a0183bd8",
+        "name": "DELETE",
+        "func": "let id_produto = msg.payload[\"id\"];\n\nmsg.topic = `\nDELETE FROM produto WHERE id_produto = ${id_produto};\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "862b2ba918cef008"
+            ]
+        ]
+    },
+    {
+        "id": "ed8357b6b61cb731",
+        "type": "ui_button",
+        "z": "2def2608a0183bd8",
+        "name": "",
+        "group": "efca5de5bbea7ad8",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "passthru": false,
+        "label": "Atualizar produtos",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "autorenew",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "0b266df679c5a10d"
+            ]
+        ]
+    },
+    {
+        "id": "0b266df679c5a10d",
+        "type": "function",
+        "z": "2def2608a0183bd8",
+        "name": "SELECT",
+        "func": "let id_produto = msg.payload[\"id\"];\n\nmsg.topic = `\nSELECT * FROM produto;\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 500,
+        "wires": [
+            [
+                "a4006b714f65490f"
+            ]
+        ]
+    },
+    {
+        "id": "a4006b714f65490f",
+        "type": "mysql",
+        "z": "2def2608a0183bd8",
+        "mydb": "1ed97092ba3e6da9",
+        "name": "Banco de dados",
+        "x": 620,
+        "y": 500,
+        "wires": [
+            [
+                "96588cd8e6ee20b6"
+            ]
+        ]
+    },
+    {
+        "id": "96588cd8e6ee20b6",
+        "type": "function",
+        "z": "2def2608a0183bd8",
+        "name": "Formatar HTML",
+        "func": "let dados = msg.payload;\n\n// Essa funciton tira a formatação padrão q vem do banco por conta do formato \"DATE\" da coluna\nfunction formatarData(data) {\n    return new Date(data).toISOString().split('T')[0];\n}\n\nlet html = `\n    <table>\n        <thead>\n            <tr>\n                <th>Id</th>\n                <th>Tipo</th>\n                <th>Peso</th>\n                <th>Preço</th>\n                <th>Data da encomenda</th>\n                <th>Sob-encomenda</th>\n            </tr>\n        </thead>\n\n        <tbody>\n            <tr>`;\nfor (let linha of dados) {\n    // html += é igual a \"html = html + ...\"\n    html += `\n                        <tr>\n                            <td>${linha.id_produto}</td>\n                            <td>${linha.tipo}</td>\n                            <td>${linha.peso}kg</td>\n                            <td>${linha.preco}R$</td>\n                            <td>${formatarData(linha.data_fabricacao)}</td>\n                            <td>${linha.sob_encomenda == 1 ? (\"Sim\") : (\"Não\")}</td>\n                        <tr>\n                    `;\n};\n`</tr>\n        </tbody>\n    </table>\n`\n\nmsg.payload = html;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 500,
+        "wires": [
+            [
+                "e8b4dbca50ae2b25"
+            ]
+        ]
+    },
+    {
+        "id": "e8b4dbca50ae2b25",
+        "type": "ui_template",
+        "z": "2def2608a0183bd8",
+        "group": "efca5de5bbea7ad8",
+        "name": "Table",
+        "order": 4,
+        "width": 9,
+        "height": 6,
+        "format": "<style>\n    table {\n        text-align: center;\n        border-collapse :collapse;\n        font-family: Arial;\n        font-size: 14px;\n    }\n\n    table thead {\n        background-color: #b8696b;\n        color: white;\n    }\n\n    table thead tr th, table tbody tr td {\n        border: 1px solid black;\n        padding: 7.5px;\n        \n    }\n\n    .div-table {\n        display: inline-flex;\n        justify-content: center;\n    }\n</style>\n\n<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 990,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ac20159340ea522f",
+        "type": "ui_form",
+        "z": "2def2608a0183bd8",
+        "name": "Atualizar dados",
+        "label": "",
+        "group": "15de5f9f5273049c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Id",
+                "value": "id_produto",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Tipo",
+                "value": "tipo",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Peso (kg)",
+                "value": "peso",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Preço",
+                "value": "preco",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Sob-encomenda",
+                "value": "sob-encomenda",
+                "type": "switch",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "id_produto": "",
+            "tipo": "",
+            "peso": "",
+            "preco": "",
+            "sob-encomenda": false
+        },
+        "payload": "",
+        "submit": "Enviar",
+        "cancel": "Cancelar",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 240,
+        "y": 60,
+        "wires": [
+            [
+                "2bd7f31aeba11b26"
+            ]
+        ]
+    },
+    {
+        "id": "2bd7f31aeba11b26",
+        "type": "function",
+        "z": "2def2608a0183bd8",
+        "name": "INSERT",
+        "func": "let tipo = msg.payload[\"tipo\"];\nlet peso = msg.payload[\"peso\"];\nlet preco = msg.payload[\"preco\"];\nlet sob_encomenda = msg.payload[\"sob-encomenda\"];\nlet id_produto = msg.payload[\"id_produto\"];\n\nlet data = new Date().toISOString().slice(0, 10);\n\nmsg.topic = `\nUPDATE produto \nSET peso = ${peso}, tipo = '${tipo}', preco = ${preco}, sob_encomenda = ${sob_encomenda}\nWHERE id_produto = ${id_produto};\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "862b2ba918cef008"
+            ]
+        ]
+    },
+    {
+        "id": "6b1f6497a82abc1c",
+        "type": "ui_spacer",
+        "z": "2def2608a0183bd8",
+        "name": "spacer",
+        "group": "d6c4dd8aeaffb7a8",
+        "order": 1,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "5ff30b145cb5e370",
+        "type": "ui_spacer",
+        "z": "2def2608a0183bd8",
+        "name": "spacer",
+        "group": "d6c4dd8aeaffb7a8",
+        "order": 3,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "ef615d2684332ff9",
+        "type": "ui_spacer",
+        "z": "2def2608a0183bd8",
+        "name": "spacer",
+        "group": "d6c4dd8aeaffb7a8",
+        "order": 4,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "560361f2f700f239",
+        "type": "ui_spacer",
+        "z": "2def2608a0183bd8",
+        "name": "spacer",
+        "group": "efca5de5bbea7ad8",
+        "order": 1,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "1fd1009be80a9ec0",
+        "type": "ui_spacer",
+        "z": "2def2608a0183bd8",
+        "name": "spacer",
+        "group": "efca5de5bbea7ad8",
+        "order": 3,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7ce5eb2fc9bf8ade",
+        "type": "ui_group",
+        "name": "Inserir produto",
+        "tab": "5f17231a14ae28c5",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1ed97092ba3e6da9",
+        "type": "MySQLdatabase",
+        "name": "DB_tia_tuts",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "Delicias_tia_tuti_DB",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "1701be2d6e2947e6",
+        "type": "ui_group",
+        "name": "Deletar produto",
+        "tab": "5f17231a14ae28c5",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "efca5de5bbea7ad8",
+        "type": "ui_group",
+        "name": "Lista de produtos",
+        "tab": "5f17231a14ae28c5",
+        "order": 4,
+        "disp": true,
+        "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "15de5f9f5273049c",
+        "type": "ui_group",
+        "name": "Atualizar produto",
+        "tab": "5f17231a14ae28c5",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d6c4dd8aeaffb7a8",
+        "type": "ui_group",
+        "name": "Lista de produtos",
+        "tab": "",
+        "order": 4,
+        "disp": true,
+        "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5f17231a14ae28c5",
+        "type": "ui_tab",
+        "name": "Lojinha da tia tuts",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
