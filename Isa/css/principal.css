@@ -1,56 +1,61 @@
 /* Estilização do BODY do site */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 body {
+    margin: 0;
     border: none;
     font-family: "Ahsing";
     font-optical-sizing: auto;
     font-weight: normal; /* Ajuste do valor 'font-weight' */
     font-style: normal;
     background: fixed;
-    overflow-x: hidden;
+}
+
+.logo {
+    width: 15%;
+    margin: 2px 2px -50px 10px;
 }
 
 header {
     background-color: #f9e9e9;
     margin: 0;
-    padding: 5px;
-    display: inline-flex;
-    width: 100vw;
-    height: 200px;
-    align-items: center;
-    justify-content: space-around;
 }
 
-header img {
-    height: 200px;
-    width: fit-content !important;
-    /* background-color: red; */
+/* Estilização da DIV do header */
+
+.divHeader {
+    position: relative;
+    align-items: center; /* Alinha verticalmente ao centro */
+    margin: auto;
+    width: 90%;
+    padding-bottom: 0px; /* Reduziu o espaço embaixo */
+    justify-content: space-between;
 }
 
-header nav {
-    
+/* Estilização do MENU do site */
+nav {
+    margin-top: -20px; /* Subiu o menu */
+    display: flex;
+    justify-content: center;
 }
 
-header nav ul {
+
+/* Estilo dos links do menu */
+nav ul {
     list-style: none;
-    display: inline-flex;
-    font-size: 1.5vw;
-    gap: 15px;
+    display: flex;
+    gap: 50px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
 }
 
-header nav ul li a {
+nav ul li a {
     color: #b8696b;
-    font-family: "Ahsing";
     text-decoration: none;
-}
-
-header nav ul li a:hover {
-    text-decoration: underline;
+    font-size: 25px;
+    font-family: "Ahsing";
+    padding: 0;
+    margin: 0;
+    line-height: 1;
 }
 
 
@@ -61,13 +66,14 @@ header nav ul li a:hover {
 }
 
 .container{
-    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
     height: 600px;
-    margin: auto;
-    position: relative;
     background: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
-    /* overflow: hidden; */
 }
 
 .container .slide .item{
@@ -77,41 +83,11 @@ header nav ul li a:hover {
     top: 50%;
     transform: translate(0, -50%);
     border-radius: 20px;
-    box-shadow: 0 10px 50px #505050;
+    box-shadow: 0 30px 50px #505050;
     background-position: 50% 50%;
     background-size: cover;
     display: inline-block;
     transition: 0.5s;
-}
-
-
-.item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    transition: background 0.3s;
-    z-index: 1;
-    border-radius: 0 0 15px 15px;
-}
-
-.item .content{
-    position: absolute;  
-    top: 50%;
-    left: 100px;
-    width: 300px;
-    text-align: left;
-    color: #eee;
-    transform: translate(0, -50%);
-    font-family: system-ui;
-    display: none;
-    z-index: 2;
-}
-
-.item .content .nome {
-    text-align: center;
-    font-size: 1.70vw;
-    font-weight: 600;
 }
 
 .slide .item:nth-child(1),
@@ -122,15 +98,6 @@ header nav ul li a:hover {
     border-radius: 0;
     width: 100%;
     height: 100%;
-    border-radius: 0 0 15px 15px;
-}
-
-.slide .item:nth-child(2)::before {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.slide .item:nth-child(2) .content {
-    display: block;
 }
 
 
@@ -149,17 +116,28 @@ header nav ul li a:hover {
     opacity: 0;
 }
 
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+
 .slide .item:nth-child(2) .content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
 }
 
 
 .content .name{
     font-size: 40px;
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: bold;
     opacity: 0;
     animation: animate 1s ease-in-out 1 forwards;
 }
@@ -174,12 +152,9 @@ header nav ul li a:hover {
 .content button{
     padding: 10px 20px;
     border: none;
-    outline: none;
     cursor: pointer;
     opacity: 0;
     animation: animate 1s ease-in-out 0.6s 1 forwards;
-    border-radius: 5px;
-    width: fit-content;
 }
 
 
