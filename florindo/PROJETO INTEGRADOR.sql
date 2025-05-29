@@ -117,13 +117,13 @@ CREATE TABLE ordem_producao (
 	lista_fabricacao VARCHAR(25) NOT NULL,
 	prioridade VARCHAR(20) NOT NULL,
 	id_produto INT NOT NULL,
-	id_funcionario INT NOT NULL,
+	id_producao INT NOT NULL,
 
 	FOREIGN KEY (id_produto) REFERENCES produto(id_produto),
-	FOREIGN KEY (id_funcionario) REFERENCES funcionario(id_funcionario)
+	FOREIGN KEY (id_producao) REFERENCES producao(id_producao)
 );
 
--- Relação entre produção e funcionário
+-- Relacao entre produção e funcionário
 
 CREATE TABLE alocacao (
 	id_alocacao INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -399,7 +399,7 @@ INSERT INTO opcao_produto (id_sabor_tamanho, id_produto) VALUES
 (13, 3);
 
 
-INSERT INTO ordem_producao (data_fabricacao, lista_fabricacao, prioridade, id_produto, id_funcionario) VALUES
+INSERT INTO ordem_producao (data_fabricacao, lista_fabricacao, prioridade, id_produto, id_producao) VALUES
 ('2025-02-03', 'Lote 1', 'Alta', 11, 19),
 ('2025-01-24', 'Lote 2', 'Baixa', 12, 16),
 ('2025-04-03', 'Lote 3', 'Média', 11, 19),
@@ -532,14 +532,14 @@ GROUP BY u.nome
 ORDER BY total_gasto DESC;
 
 -- Seleciona todos os funcionarios envolvidos em uma produção
-SELECT f.nome, a.cargo, p.status, p.data_producao
+SELECT f.nome, a.cargo , p.status, p.data_producao
 FROM funcionario f
 JOIN alocacao a ON f.id_funcionario = a.id_funcionario
 JOIN producao p ON a.id_producao = p.id_producao
 WHERE p.id_producao = 1;
 
--- Produtos produzidos por cada funcionario
-SELECT f.nome as 'Nome funcionario', p.tipo, op.prioridade, op.data_fabricacao
-FROM funcionario f
-JOIN ordem_producao op ON f.id_funcionario = op.id_funcionario
-JOIN produto p ON op.id_produto = p.id_produto;
+-- Seleciona a produção ligada ao produto, retornando informações mas detalhadas tipo embalagem e quantidade
+SELECT pd.tipo as 'Produto', pc.embalagem, pc.quantidade, op.prioridade, op.data_fabricacao
+FROM producao pc
+JOIN ordem_producao op ON pc.id_producao = op.id_producao
+JOIN produto pd ON op.id_produto = pd.id_produto;
