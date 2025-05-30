@@ -236,7 +236,7 @@ public class CadastroOrdemProducao extends javax.swing.JFrame {
         try (FileWriter writer = new FileWriter(arquivoCSV, true)) {
             // Faz o cabecalho se o arquivo estiver sendo criado agr
             if (!arquivoExiste) {
-                writer.append("IdProduto,IdProducao,Prioridade,DataFabricacao, ListaFabricacao\n");
+                writer.append("IdProduto,IdProducao,Prioridade,DataFabricacao,ListaFabricacao\n");
             }
 
             // Escreve os dados

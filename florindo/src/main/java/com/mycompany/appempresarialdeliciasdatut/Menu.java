@@ -33,7 +33,6 @@ public class Menu extends javax.swing.JFrame {
         btnCriarOrdemProducao = new javax.swing.JButton();
         btnAddFuncionario = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        btnCriarOrdemProducao2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,17 +98,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btnCriarOrdemProducao2.setBackground(new java.awt.Color(184, 105, 107));
-        btnCriarOrdemProducao2.setFont(new java.awt.Font("Noto Sans", 1, 16)); // NOI18N
-        btnCriarOrdemProducao2.setForeground(new java.awt.Color(255, 255, 255));
-        btnCriarOrdemProducao2.setText("Mostrar Listas");
-        btnCriarOrdemProducao2.setBorder(null);
-        btnCriarOrdemProducao2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarOrdemProducao2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,8 +106,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCriarOrdemProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCriarOrdemProducao2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAddFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
@@ -131,7 +118,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(187, 187, 187)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
+                        .addGap(188, 188, 188)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -148,11 +135,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCriarOrdemProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(btnCriarOrdemProducao2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(83, 83, 83)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,10 +179,6 @@ public class Menu extends javax.swing.JFrame {
         new AdicionarNovoUsuario().setVisible(true);
     }//GEN-LAST:event_btnAddFuncionarioActionPerformed
 
-    private void btnCriarOrdemProducao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarOrdemProducao2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCriarOrdemProducao2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -238,7 +219,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrarProducao;
     private javax.swing.JButton btnCadastrarProduto;
     private javax.swing.JButton btnCriarOrdemProducao;
-    private javax.swing.JButton btnCriarOrdemProducao2;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
