@@ -1,14 +1,12 @@
-@font-face {
-  font-family: "FONTSPRING DEMO - The Seasons";
-  src: url('FONTSPRINGDEMO-TheSeasonsLightRegular.woff2') format('woff2'),
-  url('FONTSPRINGDEMO-TheSeasonsLightRegular.woff') format('woff');
-}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Italiana&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'FONTSPRING DEMO - The Seasons'; /* Adicione uma fonte fallback */
+    font-family: 'Italiana', serif;
+    font-style: bold;
+    font-size: large;
 }
 
 body {
@@ -128,4 +126,9 @@ button::hover {
 
 .link-registro a:hover {
     text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+    color: #b8696b;
 }

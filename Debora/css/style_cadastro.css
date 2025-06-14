@@ -1,14 +1,11 @@
-@font-face {
-  font-family: "FONTSPRING DEMO - The Seasons";
-  src: url('FONTSPRINGDEMO-TheSeasonsLightRegular.woff2') format('woff2'),
-  url('FONTSPRINGDEMO-TheSeasonsLightRegular.woff') format('woff');
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Italiana&display=swap');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'FONTSPRING DEMO - The Seasons';
+    font-family: 'Italiana', serif;
+    font-style: bold;
+    font-size: large;
 }
 
 body {
@@ -18,6 +15,15 @@ body {
     justify-content: center;
     align-items: center;
     background: #b8696b;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.login-button button {
+    width: 4.0rem;
+    font-size: 0.75rem;
 }
 
 .container {
@@ -64,7 +70,6 @@ body {
 .login-button button {
     border: none;
     background-color: #b8696b;
-    padding: 0.4rem 1rem;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -89,14 +94,14 @@ body {
 .input-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;
+    gap: 2rem;
 }
 
 .input-box {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.1rem;
+    flex: 1 1 45%; /* Dois campos por linha com margem */
 }
 
 .input-box input {
@@ -105,6 +110,7 @@ body {
     border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
+    width: 17rem;
 }
 
 .input-box input:hover {
@@ -117,7 +123,7 @@ body {
 
 .input-box label,
 .gender-title h6 {
-    font-size: 0.75rem;
+    font-size: 1.0rem;
     font-weight: 600;
     color: #000000c0;
 }
@@ -167,6 +173,10 @@ body {
     font-size: 0.93rem;
     font-weight: 500;
     color: #fff;
+}
+
+.chk {
+    display: flex;
 }
 
 @media screen and (max-width: 1330px) {
